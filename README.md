@@ -4,7 +4,7 @@ Found AWS API Keys:
 
 extensions web
 
-1.Trufflehog
+-1.Trufflehog
 
 
 
