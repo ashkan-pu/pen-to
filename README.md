@@ -1,18 +1,23 @@
-🕵️‍♂️ Secret Discovery OR Secrets Hunting:
+🕵️‍♂️ Secret Discovery / Secrets Hunting:
 
-AWS:
+🎯 Targets:
+- AWS Keys, RSA Private Keys, Google API Keys, Twilio Tokens, JWT Secrets, DB Credentials (Mongo/MySQL)
 
-Found AWS API Keys:
-
-  1. EXTENTION-WEB:    Trufflehog
-  2. static-Analysis:  gitleaks(- gitleaks --repo-url=https:// -v -)
-  3. Dynamic-Analysis: SecretFinder (- cat ../urll.txt | while read url ; do python SecretFinder.py -i $url -o cli ; done -)
+🧰 Tools:
+1. Extension/Web: Trufflehog
+2. Static Analysis: gitleaks, gf secrets, shhgit
+3. Dynamic Analysis: SecretFinder, nuclei + templates
+(GitRob - detect-secrets)
 link:
   1. https://chromewebstore.google.com/detail/trufflehog/bafhdnhjnlcdbjcdcnafhdcphhnfnhjc
   2. https://github.com/gitleaks/gitleaks
   3. https://github.com/m4ll0k/SecretFinder
 
+AWS:
 Enumerate IAM permissions:
 enumerate-iam (- ./enumerate-iam.py --access-key AKIA... --secret-key StF0q... -)
+....
+
+
 
 
