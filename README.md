@@ -1,5 +1,7 @@
 WEB
 
+🕵️‍♂️ Secret Discovery OR Secrets Hunting:
+
 AWS:
 
 Found AWS API Keys:
