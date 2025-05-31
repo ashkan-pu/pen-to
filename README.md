@@ -2,7 +2,7 @@
 # AWS:
 Found AWS API Keys:
 
-[!NOTE]
+> [!NOTE]
 extensions web
 
 -1.Trufflehog
