@@ -1,5 +1,3 @@
-WEB
-
 🕵️‍♂️ Secret Discovery OR Secrets Hunting:
 
 AWS:
