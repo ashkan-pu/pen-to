@@ -18,7 +18,7 @@ link:
 AWS:
 Enumerate IAM permissions:
 enumerate-iam (- ./enumerate-iam.py --access-key AKIA... --secret-key StF0q... -)
-....
+---
 
 
 
