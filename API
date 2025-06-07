@@ -5,12 +5,16 @@ GraphQL Attacks:
 1. Introspection Attack
 2. Information Disclosure
 3. Denial of Service (DoS)
+     Query Explosion 
+     Security Control Bypass
+     WAF / Rate Limit bypass
 4. Authorization Bypass
 5. SQL Injection / NoSQL Injection
 6. Batching / Alias Abuse
 7. Field Suggestion Leaks
 8. CSRF (Cross-Site Request Forgery)
 9. Abusing Directives
+
 
 _____
 
