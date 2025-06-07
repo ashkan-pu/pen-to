@@ -1,7 +1,6 @@
 ## graphql-cost-analysis :
 
 const costAnalysis = require('graphql-cost-analysis').default;
-
 const server = new ApolloServer({
   schema,
   plugins: [
@@ -23,3 +22,27 @@ const server = new ApolloServer({
     },
   ],
 });
+__________________________________________
+
+## graphql-query-complexity:
+
+const { createComplexityLimitRule } = require('graphql-query-complexity');
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./your-schema');
+
+app.use('/graphql', graphqlHTTP({
+  schema,
+  validationRules: [
+    createComplexityLimitRule({
+      maximumComplexity: 100,
+      onComplete: (complexity) => {
+        console.log('Query Complexity:', complexity);
+      },
+      estimators: [
+        // هر کدوم از اینا روش محاسبه متفاوتی دارن
+        fieldExtensionsEstimator(),
+        simpleEstimator({ defaultComplexity: 1 })
+      ]
+    })
+  ]
+}));
