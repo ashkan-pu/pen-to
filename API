@@ -1,1 +1,54 @@
-123
+GraphQL:
+
+GraphQL Attacks:
+
+1. Introspection Attack
+2. Information Disclosure
+3. Denial of Service (DoS)
+4. Authorization Bypass
+5. SQL Injection / NoSQL Injection
+6. Batching / Alias Abuse
+7. Field Suggestion Leaks
+8. CSRF (Cross-Site Request Forgery)
+9. Abusing Directives
+
+_____
+
+1️⃣ Introspection Attack:
+Attacker can discover types, queries, and mutations using introspection.
+
+How to test: Send introspection queries like __schema, __type:
+{
+  __schema {
+    types {
+      name
+      fields {
+        name
+      }
+    }
+  }
+}
+
+Tools : 
+   Burp Suite InQL, GraphQLmap
+
+Mitigation: Disable introspection in production environments , authenticated users
+
+---------------
+2️⃣ GraphQL Injection:
+
+Inject malicious payloads inside GraphQL queries or mutations.
+Example: Bypass logic or alter query structure via input fields.
+
+Tools:
+    Burp Suite, GraphQLmap, InQL
+------------------
+3️⃣ 3. Batching & DoS (Denial of Service)
+
+Sending heavy or recursive queriesExample:
+
+{
+  a:users{id,friends{id,friends{id}}}
+  b:users{id}
+  c:users{id}
+}
