@@ -1,0 +1,23 @@
+const costAnalysis = require('graphql-cost-analysis').default;
+
+const server = new ApolloServer({
+  schema,
+  plugins: [
+    {
+      requestDidStart: () => ({
+        didResolveOperation({ request, document }) {
+          costAnalysis({
+            schema,
+            document,
+            variables: request.variables,
+            maximumCost: 100, // ماکزیمم مجاز برای کوئری
+            defaultCost: 1,   // اگر هزینه مشخص نشده بود، این مقدار پیش‌فرضه
+            onComplete: (cost) => {
+              console.log("Query cost:", cost);
+            },
+          });
+        },
+      }),
+    },
+  ],
+});
