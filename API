@@ -60,3 +60,9 @@ Sending heavy or recursive queriesExample:
 🛡️: 
 Depth Limiting : graphql-depth-limit ,
 graphql-cost-analysis
+---------------------
+4️⃣ Broken Access Control : 
+
+Direct access to sensitive data through resolvers that lack authorization checks.
+-IDOR 
+-Privilege escalation via mutation like updateUser(id:1, role:"admin")
