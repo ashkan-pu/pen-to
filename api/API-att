@@ -1,1 +1,31 @@
+Security Control Bypass with fragment reuse: 
+depth limit = 10
+
+fragment Deep1 on Level1 {
+  b {
+    c {
+      d {
+        e {
+          f {
+            g {
+              h {
+                i {
+                  j {
+                    boom
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query {
+  a {
+    ...Deep1
+  }
+}
 
