@@ -32,7 +32,7 @@ How to test: Send introspection queries like __schema, __type:
 Tools : 
    Burp Suite InQL, GraphQLmap
 
-Mitigation: Disable introspection in production environments , authenticated users
+🛡️: Disable introspection in production environments , authenticated users
 
 ---------------
 2️⃣ GraphQL Injection:
@@ -52,3 +52,7 @@ Sending heavy or recursive queriesExample:
   b:users{id}
   c:users{id}
 }
+
+🛡️: 
+Depth Limiting : graphql-depth-limit ,
+graphql-cost-analysis
