@@ -1,11 +1,26 @@
-▶ go install github.com/tomnomnom/waybackurls@latest
-▶ go install github.com/lc/gau/v2/cmd/gau@latest
-▶ go install github.com/KathanP19/Gxss@latest
-▶ go install github.com/tomnomnom/gf@latest
-▶ go install github.com/tomnomnom/waybackurls@latest
-▶ go install github.com/jaeles-project/gospider@latest
-▶ go install github.com/OJ/gobuster/v3@latest
-▶ go install github.com/projectdiscovery/katana/cmd/katana@latest
-▶ go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-▶ go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
- git clone https://github.com/1ndianl33t/Gf-Patterns
+Dynamic:
+  ▶ go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+  ▶ go install github.com/tomnomnom/waybackurls@latest
+  ▶ go install github.com/lc/gau/v2/cmd/gau@latest
+  ▶ go install github.com/KathanP19/Gxss@latest
+  ▶ go install github.com/tomnomnom/gf@latest
+  ▶ go install github.com/jaeles-project/gospider@latest
+  ▶ go install github.com/OJ/gobuster/v3@latest
+  ▶ go install github.com/projectdiscovery/katana/cmd/katana@latest
+  ▶ go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+  ▶ go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+  ▶ go install -v github.com/Brum3ns/firefly/cmd/firefly@latest
+
+  ▶ apt install -y feroxbuster
+
+  ▶ git clone https://github.com/m4ll0k/Atlas.git
+  ▶ git clone https://github.com/devanshbatham/paramspider.git
+  ▶ git clone https://github.com/Sh1Yo/x8.git
+  ▶ git clone https://github.com/1ndianl33t/Gf-Patterns.git
+  ▶ git clone https://github.com/m4ll0k/SecretFinder.git
+
+  ▶ pipx install arjun
+  ▶ pipx install uro
+  ▶ pip install wfuzz
+
+     acunetix - burp suite - owasp zap
