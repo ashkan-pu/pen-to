@@ -66,3 +66,5 @@ graphql-cost-analysis
 Direct access to sensitive data through resolvers that lack authorization checks.
 -IDOR 
 -Privilege escalation via mutation like updateUser(id:1, role:"admin")
+-------------------
+6️⃣ CORS Misconfiguration + CSRF on GraphQL
