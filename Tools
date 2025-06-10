@@ -18,6 +18,7 @@ Dynamic:
   ▶ git clone https://github.com/Sh1Yo/x8.git
   ▶ git clone https://github.com/1ndianl33t/Gf-Patterns.git
   ▶ git clone https://github.com/m4ll0k/SecretFinder.git
+  ▶ git clone https://github.com/chenjj/CORScanner.git
 
   ▶ pipx install arjun
   ▶ pipx install uro
