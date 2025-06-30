@@ -1,0 +1,37 @@
+example:
+
+Recon:
+
+subfinder -d target.com -silent -o subs.txt
+
+cat subs.txt | httpx -silent -status-code -title -tech-detect -o live.txt
+
+cat live.txt | cut -d' ' -f1 | gospider -t 10 -o gospider_output
+cat subs.txt | waybackurls > wayback.txt
+cat subs.txt | gau > gau.txt
+
+cat wayback.txt gau.txt | uro | tee all_cleaned_urls.txt
+
+
+------
+cat all_cleaned_urls.txt | gf xss > xss.txt
+cat all_cleaned_urls.txt | gf sqli > sqli.txt
+
+arjun -i live.txt -t 50 -o arjun_params.txt
+
+cat all_cleaned_urls.txt | gf redirect > redirect.txt
+cat all_cleaned_urls.txt | gf ssrf > ssrf.txt
+cat all_cleaned_urls.txt | gf lfi > lfi.txt
+
+-----
+nuclei -l live.txt -t cves/ -o nuclei_output.txt
+
+nuclei -l live.txt -t exposures/ -o exposures.txt
+
+feroxbuster -u https://target.com -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o ferox_output.txt
+
+cat xss.txt | Gxss -p -c "X-Forwarded-For: 127.0.0.1" -o xss_possible.txt
+
+cat sqli.txt | wfuzz -c -z file,wordlist/sqli.txt -d "id=FUZZ" --hh 0 -t 50
+
+
