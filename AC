@@ -35,3 +35,49 @@ cat xss.txt | Gxss -p -c "X-Forwarded-For: 127.0.0.1" -o xss_possible.txt
 cat sqli.txt | wfuzz -c -z file,wordlist/sqli.txt -d "id=FUZZ" --hh 0 -t 50
 
 
+________________________
+
+subfinder -d target.com -silent > subs1.txt
+assetfinder --subs-only target.com >> subs1.txt
+amass enum -passive -d target.com >> subs1.txt
+sort -u subs1.txt > all_subs.txt
+
+dnsx -l all_subs.txt -silent -a -resp -o resolved_subs.txt
+
+-
+
+cat resolved_subs.txt | gau > gau.txt
+cat resolved_subs.txt | waybackurls > wayback.txt
+katana -list resolved_subs.txt -jc -ef woff,png,jpg,gif,css -silent > katana.txt
+gospider -S resolved_subs.txt -o gospider_out --js --sitemap --robots
+
+paramspider -d target.com -o paramspider.txt
+arjun -i resolved_subs.txt -t 50 -o arjun_params.txt
+
+-
+
+cat gau.txt wayback.txt katana.txt | uro | sort -u > cleaned.txt
+
+cat cleaned.txt | gf xss > xss_params.txt
+cat cleaned.txt | gf sqli > sqli_params.txt
+cat cleaned.txt | gf lfi > lfi_params.txt
+cat cleaned.txt | gf ssrf > ssrf_params.txt
+cat cleaned.txt | gf redirect > redirect_params.txt
+
+-
+
+httpx -l resolved_subs.txt -title -tech-detect -sc -favicon -tls -o live_hosts.txt
+
+nuclei -l live_hosts.txt -t vulnerabilities/ -severity high,critical -o nuclei_criticals.txt
+firefly -f live_hosts.txt -o firefly.txt
+
+-
+
+#!/bin/bash
+subfinder -d $1 -silent > subs.txt
+cat subs.txt | httpx -silent -status-code -title > live.txt
+cat subs.txt | gau | uro | tee urls.txt
+nuclei -l live.txt -t vulnerabilities/ -severity high,critical -o result.txt
+notify -data result.txt
+
+
