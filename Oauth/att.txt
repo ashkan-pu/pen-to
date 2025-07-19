@@ -1,11 +1,3 @@
-OAuth:
-  1. Account Takeover
-  2. Token leakage
-  3. CSRF flow OAuth
-  4. Open Redirect Abuse
-  5. ID Token Forgery
-
-
 🔹 1. Misconfigured Redirect URI
 🔹 2. CSRF روی Authorization Endpoint
 🔹 3. Token Leakage - URI Fragment
