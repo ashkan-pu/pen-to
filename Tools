@@ -1,3 +1,5 @@
+https://github.com/MDKAIF302/SecArchive/blob/main/Resources/Bug_Bounty.md
+
 Dynamic:
   ▶ go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
   ▶ go install github.com/tomnomnom/waybackurls@latest
