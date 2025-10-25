@@ -1,1 +1,1 @@
-
+    subfinder -d sssssl -silent | tee ii_ss.txt ; subfinder -dL ii_ss.txt -silent | tee for_httpx.txt ; cat for_httpx.txt | httpx -sc -td |grep -vi "Cloudflare"| sed -En 's/.*\b([0-9]{1,3}(\.[0-9]{1,3}){3})\b.*/\1/p' | awk '!seen[$0]++'|tee for_nnmp.txt;nmap -iL for_nnmp.txt -p- -sC -sV ; ./reconftw.sh -l b.txt -r -a -s -y -z
