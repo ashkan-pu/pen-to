@@ -1,0 +1,45 @@
+1. Race Attack
+  - Pseudo Example
+      // Transaction A
+      send 1 BTC to merchant_B
+      
+      // Transaction B
+      send 1 BTC to attacker_wallet
+  
+      *
+test to :regtest, testnet
+      bitcoin-cli sendtoaddress <merchant_wallet> 1
+      bitcoin-cli sendtoaddress <attacker_wallet> 1
+
+
+
+________________________________________
+2. Finney Attack
+
+  Block X:
+   TX1: send 1 BTC from attacker → attacker_wallet2
+    (not broadcasted!)
+
+
+  TX2: send 1 BTC from attacker → merchant_B
+    (immediately broadcasted)
+
+
+  bitcoin-cli submitblock <private_pre_mined_block>
+  
+________________________________________
+3. 51% Attack
+
+-hard
+
+// malicious miner chain:
+create longer_chain_with:
+   mined_block_1
+   mined_block_2
+   mined_block_3
+   ...
+
+
+
+
+Bitcoin Mainnet OR Monero OR Ethereum
