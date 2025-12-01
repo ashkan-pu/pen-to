@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "✅ شروع تنظیم Clipboard..."
+
+# نصب Clipman برای XFCE (اگر استفاده می‌کنی)
+if ! command -v xfce4-clipman &> /dev/null
+then
+    echo "📦 نصب xfce4-clipman..."
+    sudo apt update && sudo apt install -y xfce4-clipman
+fi
+
+# اجرای Clipman
+echo "▶️ اجرای xfce4-clipman..."
+xfce4-clipman &
+
+# راهنمای VM
+if systemd-detect-virt | grep -q "oracle"; then
+    echo "💡 VirtualBox تشخیص داده شد. مطمئن شو Shared Clipboard فعال است (Bidirectional)."
+elif systemd-detect-virt | grep -q "vmware"; then
+    echo "💡 VMware تشخیص داده شد. مطمئن شو Guest Isolation (Copy/Paste) فعال است."
+fi
+
+echo "✅ تمام شد! حالا می‌تونی Ctrl+Shift+C و Ctrl+Shift+V استفاده کنی."
