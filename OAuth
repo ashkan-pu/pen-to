@@ -1,0 +1,103 @@
+OAuth Pentest Checklist (Bug Bounty / Pentest)
+
+1. Identify OAuth Flow
+Check for social login options (Google, GitHub, etc.)
+Identify the Authorization endpoint (e.g., /authorize)
+Identify the Token endpoint (e.g., /token)
+Determine the OAuth grant type:
+Authorization Code
+Implicit
+Hybrid
+Device / PKCE
+Verify whether PKCE is implemented (especially for SPA / Mobile)
+
+2. redirect_uri Validation (Critical)
+Check if redirect_uri uses exact matching or wildcard
+Test subdomain manipulation:
+https://evil.client.com
+Test open redirect via redirect_uri parameter:
+redirect_uri=https://client.com/redirect?next=https://evil.com
+Test URL encoding / double encoding
+Test fragment injection (#)
+Test trailing slash / case sensitivity
+Test HTTP → HTTPS downgrade
+Impact: Token leakage, account takeover
+
+3. state Parameter (OAuth CSRF)
+Verify presence of state
+Remove the state parameter completely
+Modify the state value
+Verify correlation between request and callback
+Check whether state is random and non-predictable
+Impact: Login CSRF, account linking attack
+
+4. Response Type Abuse
+Test switching response_type=code ↔ response_type=token
+Test invalid combinations, e.g.:
+response_type=code token
+Check if the authorization server allows implicit flow for web applications
+Impact: Token exposure / token leakage
+
+5. Authorization Code Tests
+Attempt to reuse the authorization code
+Attempt to exchange the code with:
+a different client_id
+a different redirect_uri
+Check if the code has proper expiration
+Test using the same code across multiple sessions
+Impact: Full account takeover
+6. Token Security (Access / ID Token)
+
+Check for token leakage in:
+URL
+Referer header
+localStorage
+server logs
+Verify JWT security:
+alg=none
+signature validation
+aud, iss, exp
+Check if tokens are properly bound to the user and client
+Impact: Session hijacking
+
+7. Scope Manipulation
+Try adding extra scopes:
+scope=openid profile email admin
+Remove required scopes
+Check if scopes can be granted without user approval
+Impact: Privilege escalation
+
+8. Client Validation
+Verify binding between client_id and redirect_uri
+Test using another application's client_id
+Check that client_secret is not exposed in the frontend
+Impact: Token misbinding
+
+9. PKCE (if implemented)
+Remove code_verifier
+Modify code_verifier
+Check for S256 vs plain enforcement
+Verify that PKCE is enforced when required
+Impact: Authorization code interception
+
+10. Account Linking / Social Login
+Login without verifying email ownership
+Link attacker’s OAuth account to victim’s account
+Change identity provider during callback
+Verify email ownership checks
+Impact: Account takeover
+
+11. Logout & Session Handling
+Verify token validity after logout
+Check for token revocation endpoint
+Test for session fixation
+
+
+
+Top Bug Bounty Targets (Priority)
+
+redirect_uri validation
+state parameter protection
+Authorization code reuse
+Token leakage
+Account linking / social login issues
